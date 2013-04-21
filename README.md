@@ -30,12 +30,18 @@ Write tests in `tests/spectacles.js` like this:
 
 ``` js
 describe("phantomjs-test-provisions example test", function() {
-    mymodule = require("./../../mymodule");
+    var mymodule = require("./../../mymodule");
 
     it("should exist", function() {
         should.exist(mymodule);
     });
 });
+```
+
+An error about `require()` is solved like this (hopefully this will not be required in the near future, see TODO):
+
+``` js
+var dot = require(fs.workingDirectory + "./../things.js");
 ```
 
 Then run tests like this (if it was installed with `-g` when calling `npm install`):
@@ -63,6 +69,10 @@ Also there is an example using grunt (see `Gruntfile.js`):
 ``` bash
 grunt test
 ```
+
+# TODO
+
+* fix relative requires in `tests/`
 
 # license
 
