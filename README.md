@@ -77,6 +77,10 @@ describe("phantomjs-test-provisions example test", function() {
 });
 ```
 
+# TODO
+
+* script in `bin/` so developers can avoid `tests/run-tests.js`
+
 # license
 
 BSD

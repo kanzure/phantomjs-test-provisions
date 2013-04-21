@@ -3,12 +3,11 @@ var testprovisions = require("./../../phantomjs-test-provisions");
 var jasmine = testprovisions.jasmine;
 var jasmineConsoleReporter = testprovisions.jasmineConsoleReporter;
 var chai = testprovisions.chai;
-var should = chai.should();
-var it = jasmine.it;
-var describe = jasmine.describe;
+var should = testprovisions.should;
+var it = testprovisions.it;
+var describe = testprovisions.describe;
 
-// TODO: search for test/spec js files automatically
-phantom.injectJs("./examples.js");
+testprovisions.loadTests("tests/");
 
 // configure and start jasmine
 var jasmineEnv = testprovisions.configureJasmine();
