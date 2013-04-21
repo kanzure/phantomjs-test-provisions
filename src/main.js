@@ -42,36 +42,16 @@ function configureJasmine() {
 exports.configureJasmine = configureJasmine;
 
 /**
- * Build a list of files that are probably tests in a given path.
- */
-function findTests(path) {
-    // remove a trailing "/"
-    // TODO: this does not fix "tests////" or other variations
-    if (path.substr(-1) == "/") {
-        path = path.slice(0, -1);
-    }
-
-    var suspects = [];
-    var files = fs.list(path);
-    for (var i = 0; i < files.length; i += 1) {
-        filename = files[i];
-        if (filename.substr(-3) == ".js") {
-            suspects.push(path + "/" + filename);
-        }
-    }
-
-    return suspects;
-}
-
-/**
  * Search and load tests from a certain path.
  */
 function loadTests(path) {
-    filepaths = findTests(path);
+    var filepaths = fs.list(path);
     for (var i = 0; i < filepaths.length; i += 1) {
         filepath = filepaths[i];
-        if (filepath != "tests/run-tests.js") {
-            phantom.injectJs("./" + filepath);
+        if (filepath.substr(-3) == ".js") {
+            if (filepath.substr(-12) != "run-tests.js") {
+                phantom.injectJs("./" + filepath);
+            }
         }
     }
 }

@@ -1,5 +1,22 @@
 #!/usr/bin/env phantomjs
-testprovisions = require("../src/main.js");
+var fs = require("fs");
+var system = require("system");
+
+var phantomjstestpath = system.args[0];
+var isLink = false;
+
+if (fs.isLink(phantomjstestpath)) {
+    isLink = true;
+
+    phantomjstestpath = fs.readLink(phantomjstestpath);
+
+    // remove "phantomjs-test" from the path
+    phantomjstestpath = phantomjstestpath.slice(0, -14);
+} else {
+    phantomjstestpath = "./";
+}
+
+testprovisions = require(phantomjstestpath + "../src/main.js");
 var jasmine = testprovisions.jasmine;
 var jasmineConsoleReporter = testprovisions.jasmineConsoleReporter;
 var chai = testprovisions.chai;
@@ -7,8 +24,63 @@ var should = testprovisions.should;
 var it = testprovisions.it;
 var describe = testprovisions.describe;
 
-testprovisions.loadTests("tests/");
+function findPackageRoot(currentPath) {
+    currentPath = fs.absolute(currentPath);
 
-// configure and start jasmine
+    if (currentPath == "/") {
+        var message = "no package.json found";
+
+        // tell the user what's up
+        console.error("Error: " + message);
+
+        // attempt to exit
+        phantom.exit();
+
+        // additional fodder to make phantomjs exit
+        throw Error(message); // hack
+    }
+
+    var stopper = false;
+
+    var files = fs.list(currentPath);
+    for (var i = 0; i < files.length; i += 1) {
+        filename = files[i];
+        if (filename == "package.json") {
+            stopper = true;
+        }
+    }
+
+    if (!stopper) {
+        return findPackageRoot(fs.absolute(currentPath + "/../"));
+    } else {
+        return currentPath;
+    }
+}
+
+function findTestsLocation(packageRootPath) {
+    var testsLocation = null;
+    var files = fs.list(packageRootPath);
+
+    for (var i = 0; i < files.length; i += 1) {
+        filename = files[i];
+        if (filename == "tests" || filename == "test" || filename == "spec" || filename == "specs") {
+            testsLocation = filename;
+        }
+    }
+
+    return testsLocation;
+}
+
+var packageRootPath = findPackageRoot(fs.absolute(fs.workingDirectory));
+var testsLocation = findTestsLocation(packageRootPath);
+
+// switch to the tests path so that relative require() works
+testsPath = fs.absolute(packageRootPath + "/" + testsLocation);
+fs.changeWorkingDirectory(testsPath);
+
+// use phantom.injectJs to load the tests
+testprovisions.loadTests(testsPath);
+
+// configure and start jasmine to run the tests
 var jasmineEnv = testprovisions.configureJasmine();
 jasmineEnv.execute();

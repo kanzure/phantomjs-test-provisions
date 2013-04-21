@@ -16,11 +16,19 @@ describe("phantomjs-test-provisions", function() {
 
 describe("phantomjs-test-provisions math module", function() {
     it("should be loadable", function() {
+        console.log("current workingDirectory is: " + fs.absolute(fs.workingDirectory));
+
+        // works
+        math = require(fs.workingDirectory + "/../src/math.js");
+
+        // this next one works when calling ./bin/phantomjs-test
+        // but doesn't work when using a globally-installed phantomjs-test
         math = require("./../src/math.js");
     });
 
     it("should exist", function() {
-        math = require("./../src/math.js");
+        //math = require("./../src/math.js");
+        math = require(fs.workingDirectory + "/../src/math.js");
         should.exist(math);
     });
 });
