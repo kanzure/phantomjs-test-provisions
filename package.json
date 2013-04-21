@@ -2,7 +2,7 @@
   "name": "phantomjs-test-provisions",
   "description": "Testing for PhantomJS scripts.",
   "readmeFilename": "README.md",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "homepage": "https://github.com/kanzure/phantomjs-test-provisions",
   "author": {
     "name": "Bryan Bishop",
@@ -37,8 +37,7 @@
   },
   "dependencies": {
     "chai": "~1.5.0",
-    "jasmine-standalone": ">=1.3.1",
-    "jasmine-console": ">=0.0.1"
+    "jasmine-standalone": ">=1.3.1"
   },
   "optionalDependencies": {
     "grunt": "~0.4.0",
