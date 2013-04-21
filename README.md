@@ -48,8 +48,15 @@ var should = chai.should();
 var it = jasmine.it;
 var describe = jasmine.describe;
 
-/* Remember to setup the module if it's expected to be available later. It
-could also be required() inside each individual test. */
+/*
+Remember to setup the module if it's expected to be available later. It
+could also be required() inside each individual test.
+
+Also usable here:
+    ./../main.js
+    ./../main
+    ./../../packagename
+*/
 var mymodule = require("./../../mymodule")
 
 // include the custom test files here
