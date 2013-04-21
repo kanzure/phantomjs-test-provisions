@@ -52,7 +52,7 @@ Using a local binary is also possible and it could be added to a `Gruntfile` or 
 
 # who tests the testers
 
-There is also default example which can run immediately for this project:
+There is also a default example which can run immediately for this project:
 
 ``` bash
 npm test
