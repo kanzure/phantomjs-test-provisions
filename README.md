@@ -22,9 +22,37 @@ With [npm](http://npmjs.org/) do:
 npm install phantomjs-test-provisions
 ```
 
+This adds unit testing to PhantomJS modules.
+
 # usage
 
-There is a default example which can run immediately:
+Write tests in `tests/spectacles.js` like this:
+
+``` js
+describe("phantomjs-test-provisions example test", function() {
+    mymodule = require("./../../mymodule");
+
+    it("should exist", function() {
+        should.exist(mymodule);
+    });
+});
+```
+
+Then run tests like this (if it was installed with `-g` when calling `npm install`):
+
+``` bash
+phantomjs-test
+```
+
+Using a local binary is also possible and it could be added to a `Gruntfile` or `package.json` like so:
+
+``` bash
+./node_modules/phantomjs-test-provision/bin/phantomjs-test
+```
+
+# who tests the testers
+
+There is also default example which can run immediately for this project:
 
 ``` bash
 npm test
@@ -35,51 +63,6 @@ Also there is an example using grunt (see `Gruntfile.js`):
 ``` bash
 grunt test
 ```
-
-To add tests to a separate PhantomJS module, add a `tests/run-tests.js` that looks like this:
-
-``` js
-// load and setup phantomjs-test-provisions
-var testprovisions = require("./../node_modules/phantomjs-test-provisions");
-var jasmine = testprovisions.jasmine;
-var jasmineConsoleReporter = testprovisions.jasmineConsoleReporter;
-var chai = testprovisions.chai;
-var should = chai.should();
-var it = jasmine.it;
-var describe = jasmine.describe;
-
-/*
-Remember to setup the module if it's expected to be available later. It
-could also be required() inside each individual test.
-
-Also usable here:
-    ./../main.js
-    ./../main
-    ./../../packagename
-*/
-var mymodule = require("./../../mymodule")
-
-// include the custom test files here
-phantom.injectJs("./test-sample.js");
-
-// launch the tests
-var jasmineEnv = testprovisions.configureJasmine();
-jasmineEnv.execute();
-```
-
-Then write tests in `tests/test-sample.js` like:
-
-``` js
-describe("phantomjs-test-provisions example test", function() {
-    it("should exist", function() {
-        should.exist(mymodule);
-    });
-});
-```
-
-# TODO
-
-* script in `bin/` so developers can avoid `tests/run-tests.js`
 
 # license
 

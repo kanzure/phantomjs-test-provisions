@@ -2,7 +2,7 @@
   "name": "phantomjs-test-provisions",
   "description": "Testing for PhantomJS scripts.",
   "readmeFilename": "README.md",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "homepage": "https://github.com/kanzure/phantomjs-test-provisions",
   "author": {
     "name": "Bryan Bishop",
@@ -31,7 +31,10 @@
     "phantomjs": ">=0.9.0"
   },
   "scripts": {
-    "test": "/usr/bin/env phantomjs tests/run-tests.js"
+    "test": "./bin/phantomjs-test"
+  },
+  "bin": {
+    "phantomjs-test": "./bin/phantomjs-test"
   },
   "devDependencies": {
   },

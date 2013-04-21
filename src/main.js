@@ -45,6 +45,8 @@ exports.configureJasmine = configureJasmine;
  * Build a list of files that are probably tests in a given path.
  */
 function findTests(path) {
+    // remove a trailing "/"
+    // TODO: this does not fix "tests////" or other variations
     if (path.substr(-1) == "/") {
         path = path.slice(0, -1);
     }
@@ -61,6 +63,9 @@ function findTests(path) {
     return suspects;
 }
 
+/**
+ * Search and load tests from a certain path.
+ */
 function loadTests(path) {
     filepaths = findTests(path);
     for (var i = 0; i < filepaths.length; i += 1) {

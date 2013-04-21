@@ -6,7 +6,7 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON("package.json"),
         exec: {
             phantomjstest: {
-                cmd: "/usr/bin/env phantomjs tests/run-tests.js"
+                cmd: "./bin/phantomjs-test"
             }
         }
     });
