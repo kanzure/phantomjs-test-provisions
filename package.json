@@ -1,0 +1,48 @@
+{
+  "name": "phantomjs-test-provisions",
+  "description": "Testing for PhantomJS scripts.",
+  "readmeFilename": "README.md",
+  "version": "0.0.1",
+  "homepage": "https://github.com/kanzure/phantomjs-test-provisions",
+  "author": {
+    "name": "Bryan Bishop",
+    "email": "kanzure@gmail.com",
+    "url": "http://heybryan.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kanzure/phantomjs-test-provisions"
+  },
+  "bugs": {
+    "url": "https://github.com/kanzure/phantomjs-test-provisions/issues",
+    "email": "kanzure@gmail.com"
+  },
+  "licenses": [{"license": "BSD"}],
+  "keywords": [
+    "phantomjs",
+    "testing",
+    "test",
+    "unit testing",
+    "BDD",
+    "TDD",
+    "jasmine"
+  ],
+  "engines": {
+    "phantomjs": ">=0.9.0"
+  },
+  "scripts": {
+    "test": "/usr/bin/env phantomjs tests/run-tests.js"
+  },
+  "devDependencies": {
+  },
+  "dependencies": {
+    "chai": "~1.5.0",
+    "jasmine-standalone": ">=1.3.1",
+    "jasmine-console": ">=0.0.1"
+  },
+  "optionalDependencies": {
+    "grunt": "~0.4.0",
+    "grunt-exec": ">=0.4.0"
+  },
+  "main": "./src/main.js"
+}
