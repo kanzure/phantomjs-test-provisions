@@ -54,7 +54,7 @@ function loadTests(path) {
     var filepaths = fs.list(path);
     for (var i = 0; i < filepaths.length; i += 1) {
         filepath = filepaths[i];
-        if (filepath.substr(-3) == ".js") {
+        if (filepath.substr(-3) == ".js" || filepath.substr(-7) == ".coffee") {
             if (filepath.substr(-12) != "run-tests.js") {
                 var testmodule = require(path + "/" + filepath);
                 testmodule.run();
