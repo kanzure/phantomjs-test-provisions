@@ -50,7 +50,8 @@ function loadTests(path) {
         filepath = filepaths[i];
         if (filepath.substr(-3) == ".js") {
             if (filepath.substr(-12) != "run-tests.js") {
-                phantom.injectJs("./" + filepath);
+                var testmodule = require(path + "/" + filepath);
+                testmodule.run();
             }
         }
     }

@@ -1,18 +1,18 @@
 # phantomjs-test-provisions
 
 [PhantomJS](http://phantomjs.org/) unit testing module installable through npm.
+
 Makes your PhantomJS javascript spaghetti testable, reusable and maybe even
 production-ready.
 
-Note that PhantomJS must be installed. It is not a directly stated dependency
-because many developers choose to install phantomjs separately (outside of
-node/npm), and an explicit dependency on PhantomJS would entail downloading an
-additional copy of the PhantomJS binary.
-
 phantomjs-test-provisions uses a standalone version of Jasmine. This package is
 largely based off of code in the upstream PhantomJS repository. As a separate
-node module, it could be a quick option for developers interested in adding
-testing to their PhantomJS outer context (JavaScriptCore environment).
+node module, it's a quick option for developers interested in adding testing to
+their PhantomJS outer context (JavaScriptCore environment).
+
+# phantomjs
+
+Note that PhantomJS must be installed and available in `$PATH`.
 
 # install
 
@@ -29,34 +29,30 @@ This adds unit testing to PhantomJS modules.
 Write tests in `tests/spectacles.js` like this:
 
 ``` js
-describe("phantomjs-test-provisions example test", function() {
-    var mymodule = require("./../../mymodule");
+exports.run = function() {
+    describe("phantomjs-test-provisions example test", function() {
+        var mymodule = require("./../../mymodule");
 
-    it("should exist", function() {
-        should.exist(mymodule);
+        it("should exist", function() {
+            should.exist(mymodule);
+        });
     });
-});
+}
 ```
 
-An error about `require()` is solved like this (hopefully this will not be required in the near future, see TODO):
-
-``` js
-var dot = require(fs.workingDirectory + "./../things.js");
-```
-
-Then run tests like this (if it was installed with `-g` when calling `npm install`):
+Then run tests like this (if it was installed through `npm install -g`):
 
 ``` bash
 phantomjs-test
 ```
 
-Using a local binary is also possible and it could be added to a `Gruntfile` or `package.json` like so:
+Using the script through a relative path is also possible and it could be added to a `Gruntfile` or `package.json` like so:
 
 ``` bash
 ./node_modules/phantomjs-test-provision/bin/phantomjs-test
 ```
 
-# who tests the testers
+# who tests the testers?
 
 There is also a default example which can run immediately for this project:
 
@@ -70,9 +66,11 @@ Also there is an example using grunt (see `Gruntfile.js`):
 grunt test
 ```
 
-# TODO
+or even:
 
-* fix relative requires in `tests/`
+``` bash
+./bin/phantomjs-test
+```
 
 # license
 
