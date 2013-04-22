@@ -12,17 +12,22 @@ their PhantomJS outer context (JavaScriptCore environment).
 
 # phantomjs
 
-Note that PhantomJS must be installed and available in `$PATH`.
+Note that PhantomJS must be installed. It must be available in `$PATH`.
 
 # install
 
 With [npm](http://npmjs.org/) do:
 
-``` bash
+```
 npm install phantomjs-test-provisions
 ```
 
-This adds unit testing to PhantomJS modules.
+This adds unit testing to PhantomJS modules. To make use of the global script,
+use:
+
+```
+npm install -g phantomjs-test-provisions
+```
 
 # usage
 
@@ -42,33 +47,34 @@ exports.run = function() {
 
 Then run tests like this (if it was installed through `npm install -g`):
 
-``` bash
+```
 phantomjs-test
 ```
 
-Using the script through a relative path is also possible and it could be added to a `Gruntfile` or `package.json` like so:
+Using the script through a relative path is also possible and it could be added
+to a `Gruntfile` or `package.json` like so:
 
-``` bash
-./node_modules/phantomjs-test-provision/bin/phantomjs-test
+```
+./node_modules/phantomjs-test-provisions/bin/phantomjs-test
 ```
 
 # who tests the testers?
 
 There is also a default example which can run immediately for this project:
 
-``` bash
+```
 npm test
 ```
 
 Also there is an example using grunt (see `Gruntfile.js`):
 
-``` bash
+```
 grunt test
 ```
 
 or even:
 
-``` bash
+```
 ./bin/phantomjs-test
 ```
 
