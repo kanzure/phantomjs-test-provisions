@@ -10,6 +10,12 @@ exports.chai = chai;
 var should = chai.should();
 exports.should = should;
 
+var expect = require("chai").expect;
+exports.expect = expect;
+
+var assert = chai.assert;
+exports.assert = assert;
+
 var it = jasmine.it;
 exports.it = it;
 

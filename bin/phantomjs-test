@@ -21,6 +21,8 @@ var jasmine = testprovisions.jasmine;
 var jasmineConsoleReporter = testprovisions.jasmineConsoleReporter;
 var chai = testprovisions.chai;
 var should = testprovisions.should;
+var expect = chai.expect;
+var assert = chai.assert;
 var it = testprovisions.it;
 var describe = testprovisions.describe;
 

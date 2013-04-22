@@ -58,6 +58,12 @@ to a `Gruntfile` or `package.json` like so:
 ./node_modules/phantomjs-test-provisions/bin/phantomjs-test
 ```
 
+# writing tests
+
+There are multiple styles available, provided by [Chai](http://chaijs.com/)
+including [assert](http://chaijs.com/api/assert/) and
+[expect/should](http://chaijs.com/api/bdd/).
+
 # who tests the testers?
 
 There is also a default example which can run immediately for this project:
