@@ -22,5 +22,33 @@ exports.run = function() {
         it("should have pid greater than 0", function() {
             expect(system.pid).to.be.greaterThan(0);
         });
+
+        it("should have platform as string", function() {
+            expect(typeof(system.platform)).to.equal('string');
+        });
+
+        it("should have platform set to 'phantomjs'", function() {
+            expect(system.platform).to.equal('phantomjs');
+        });
+
+        it("should have args as array", function() {
+            expect(system.args instanceof Array).to.be.ok;
+        });
+
+        it("should have args with at least one item", function() {
+            expect(system.args.length >= 1).to.be.ok;
+        });
+
+        it("should have env as object", function() {
+            expect(typeof system.env).to.equal('object');
+        });
+
+        it("should have os as object", function() {
+            expect(typeof system.os).to.equal('object');
+        });
+
+        it("should have isSSLSupported as boolean", function() {
+            expect(typeof system.isSSLSupported).to.equal('boolean');
+        });
     });
 }
