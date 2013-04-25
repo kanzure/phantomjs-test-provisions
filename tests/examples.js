@@ -39,4 +39,12 @@ exports.run = function() {
             assert.isTrue(true, "true is true");
         });
     });
+
+    describe("runs", function() {
+        it("should work", function() {
+            testprovisions.runs(function() {
+                console.log("runs() callback says hello cruel world");
+            });
+        });
+    });
 };

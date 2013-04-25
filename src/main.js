@@ -4,6 +4,12 @@ exports.jasmine = jasmine;
 var jasmineConsoleReporter = require("./console");
 exports.jasmineConsoleReporter = jasmineConsoleReporter;
 
+var waits = jasmine.waits;
+exports.waits = waits;
+
+var runs = jasmine.runs;
+exports.runs = runs;
+
 var chai = require("chai");
 exports.chai = chai;
 
