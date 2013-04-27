@@ -47,4 +47,10 @@ exports.run = function() {
             });
         });
     });
+
+    describe("waitsFor", function() {
+        it("should exist", function() {
+            should.exist(testprovisions.waitsFor);
+        });
+    });
 };

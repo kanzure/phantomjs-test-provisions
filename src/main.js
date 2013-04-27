@@ -7,6 +7,9 @@ exports.jasmineConsoleReporter = jasmineConsoleReporter;
 var waits = jasmine.waits;
 exports.waits = waits;
 
+var waitsFor = jasmine.waitsFor;
+exports.waitsFor = waitsFor;
+
 var runs = jasmine.runs;
 exports.runs = runs;
 

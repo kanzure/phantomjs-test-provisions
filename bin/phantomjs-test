@@ -26,6 +26,7 @@ var assert = chai.assert;
 var it = testprovisions.it;
 var describe = testprovisions.describe;
 var waits = testprovisions.waits;
+var waitsFor = testprovisions.waitsFor;
 var runs = testprovisions.runs;
 
 function findPackageRoot(currentPath) {
